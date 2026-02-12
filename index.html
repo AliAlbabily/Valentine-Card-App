@@ -124,6 +124,10 @@
             animation: fall linear forwards;
         }
 
+        .card.no-hover {
+            background: #293e54; /* or any color you want */
+        }
+
     </style>
 </head>
 <body>
@@ -134,8 +138,8 @@
     <div class="static-heart" style="bottom: 20%; right: 10%; transform: rotate(-10deg);">❤</div>
 
     <div class="card">
-        <h1>Hello Beautiful!</h1>
-        <p>You make my heart smile every single day. <br><b>Will you be my Valentine?</b></p>
+        <h1>Hello Beautiful !!</h1>
+        <p style="color: #e16da7">You make my heart smile every single day. <br><b>Will you be my Valentine ?</b></p>
         
         <div class="btn-container">
             <button id="yesBtn">Yes! 💖</button>
@@ -211,6 +215,22 @@
                 drop.remove();
             }, 1000);
         }
+
+        const card = document.querySelector('.card');
+
+        
+        // Change the card color when hovering over the NO button to enhance gloomy effect
+        noBtn.addEventListener('mouseenter', () => {
+            body.classList.add('gloomy-mode');
+            card.classList.add('no-hover');   // change card color
+            rainInterval = setInterval(createRain, 20);
+        });
+
+        noBtn.addEventListener('mouseleave', () => {
+            body.classList.remove('gloomy-mode');
+            card.classList.remove('no-hover'); // reset card color
+            clearInterval(rainInterval);
+        });
     </script>
 </body>
 </html>
