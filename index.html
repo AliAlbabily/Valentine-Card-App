@@ -210,15 +210,12 @@
             heart.classList.add('heart-drop');
             heart.innerHTML = '❤️';
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 1 + "s"; // between 1s and 3s
-            heart.style.fontSize = Math.random() * 20 + 20 + "px"; // varying sizes
+            heart.style.top = "0px";                // ← start from top
+            heart.style.animationDuration = Math.random() * 2 + 1 + "s";
+            heart.style.fontSize = Math.random() * 20 + 20 + "px";
             
             body.appendChild(heart);
-
-            // Remove element after animation finishes to keep DOM clean
-            setTimeout(() => {
-                heart.remove();
-            }, 3000);
+            setTimeout(() => heart.remove(), 3000);
         }
 
         // --- Logic for NO Button (Gloomy Rain) ---
@@ -257,13 +254,11 @@
             const drop = document.createElement('div');
             drop.classList.add('rain-drop');
             drop.style.left = Math.random() * 100 + "vw";
-            drop.style.animationDuration = Math.random() * 0.5 + 0.5 + "s"; // Fast fall
+            drop.style.top = "0px";                  // ← start from top
+            drop.style.animationDuration = Math.random() * 0.5 + 0.5 + "s";
             
             body.appendChild(drop);
-
-            setTimeout(() => {
-                drop.remove();
-            }, 1000);
+            setTimeout(() => drop.remove(), 1000);
         }
 
         const card = document.querySelector('.card');
