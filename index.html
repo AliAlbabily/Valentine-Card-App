@@ -128,6 +128,22 @@
             background: #293e54; /* or any color you want */
         }
 
+        /* Shimmering glow effect for Valentine */
+        .shine {
+            display: inline-block;
+            color: #ff4d6d; /* base pink color */
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff4d6d, #ffd1dc, #ff4d6d);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shineAnim 2s infinite linear;
+        }
+
+        @keyframes shineAnim {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
     </style>
 </head>
 <body>
@@ -139,7 +155,7 @@
 
     <div class="card">
         <h1 id="titleText">Hello Beautiful !!</h1>
-        <p id="msgText" style="color: #e16da7">You make my heart smile every single day. <br><b>Will you be my Valentine ?</b></p>
+        <p id="msgText" style="color: #e16da7">You make my heart smile every single day. <br><b>Will you be my <span class="shine">Valentine</span> ?</b></p>
         
         <div class="btn-container">
             <button id="yesBtn">Yes! 💖</button>
