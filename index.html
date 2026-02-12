@@ -146,8 +146,20 @@
             <button id="noBtn">No</button>
         </div>
     </div>
-    
-    <img id="gifOverlay" src="https://media.tenor.com/-legwEzkXG0AAAAM/angry-cat.gif" style="
+
+    <!-- No-button GIF -->
+    <img id="gifNo" src="https://media.tenor.com/-legwEzkXG0AAAAM/angry-cat.gif" style="
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: 999;
+        display: none;
+    ">
+
+    <!-- Yes-button GIF -->
+    <img id="gifYes" src="https://i.pinimg.com/originals/02/84/a5/0284a51c1faf26fc686ff82e722643a9.gif" style="
         position: fixed;
         inset: 0;
         width: 100vw;
@@ -162,6 +174,9 @@
         const titleText = document.getElementById('titleText');
         const msgText = document.getElementById('msgText');
         const gifOverlay = document.getElementById('gifOverlay');
+
+        const gifNo = document.getElementById('gifNo');
+        const gifYes = document.getElementById('gifYes');
 
         const body = document.body;
         const yesBtn = document.getElementById('yesBtn');
@@ -184,6 +199,10 @@
             setTimeout(() => {
                 document.querySelectorAll('.heart-drop').forEach(el => el.remove());
             }, 2000); 
+        });
+
+        yesBtn.addEventListener('click', () => {
+            showGif(gifYes);
         });
 
         function createHeart() {
@@ -223,19 +242,14 @@
 
             if (noClickCount === 1) {
                 titleText.textContent = "Lessshhh 7oby !!";
-                msgText.innerHTML = "Don't click No again XD";
+                msgText.innerHTML = "Don't click on NO again XD";
 
             } else if (noClickCount === 2) {
                 titleText.textContent = "Astagfirullah";
                 msgText.innerHTML = "This is your last chance Habibti 😒";
 
             } else {
-                // 3rd click and beyond → show GIF
-                gifOverlay.style.display = "block";
-
-                setTimeout(() => {
-                    gifOverlay.style.display = "none";
-                }, 3000);
+                showGif(gifNo);
             }
         });
 
@@ -267,6 +281,15 @@
             card.classList.remove('no-hover'); // reset card color
             clearInterval(rainInterval);
         });
+
+    
+        // Show the GIF overlay when NO button is clicked 3 times
+        function showGif(gifElement, duration = 3000) {
+            gifElement.style.display = "block";
+            setTimeout(() => {
+                gifElement.style.display = "none";
+            }, duration);
+        }
     </script>
 </body>
 </html>
